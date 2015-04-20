@@ -5,6 +5,7 @@ $path = dirname(__FILE__);
 $testing = '/path/to/testing';
 $production = '/path/to/production';
 
+exit($path);
 switch ($path){
     case $production: define('ENVIRONMENT', 'production'); break;
     case $testing: define('ENVIRONMENT', 'testing'); break;
