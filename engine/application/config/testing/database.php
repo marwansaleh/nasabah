@@ -49,9 +49,9 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'k8721830_nasabahco';
+$db['default']['username'] = 'k8721830_nasabah';
 $db['default']['password'] = '7851aoyiuz';
-$db['default']['database'] = 'k8721830_nasabahco';
+$db['default']['database'] = 'k8721830_nasabah';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = 'nsc_';
 $db['default']['pconnect'] = TRUE;
