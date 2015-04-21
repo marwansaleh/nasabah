@@ -95,26 +95,17 @@ class Category extends MY_News {
         $this->data['parameters'] = $parameters;
         
         //get category id from slug
-        $category_id = $this->category_m->get_value('id', array('slug'=>$slug));
-        if (!$category_id){exit('Can not find category id for '.$slug);}
-        $this->data['active_menu'] = $slug;
-        $articles = $this->_category_news($category_id, 20);
-            
-        $this->data['articles'] = array();
-        foreach ($articles as $index => $item){
-            if ($index==0){
-                if ($item->image_type==IMAGE_TYPE_MULTI){
-                    $item->images = $this->image_m->get_by(array('article_id'=>$item->id));
-                }
-            }
-            $item->created_by_name = $this->user_m->get_value('full_name', array('id'=>$item->created_by));
-            $this->data['articles'][] = $item;
+        $category = $this->category_m->get_by(array('slug'=>$slug), TRUE);
+        if (!$category){
+            show_404();exit;
         }
+        $this->data['category'] = $category;
+        $this->data['active_menu'] = $slug;
         
         //Load popular news
         $limit = isset($parameters['MOBILE_NEWS_NUM'])?$parameters['MOBILE_NEWS_NUM']:10;
         $this->data['limit'] = $limit;
-        $this->data['mobile_news'] = $this->_mobile_news($limit, array());
+        $this->data['mobile_news'] = $this->_mobile_news($limit, array('category_id'=>$category->id));
         
         $this->data['subview'] = 'mobile/category/index';
         $this->load->view('_layout_mobile', $this->data);
