@@ -1,4 +1,5 @@
 <div class="main">
+    <h3 style="margin: 5px 0 0 10px;"><?php echo $category->name; ?></h3>
     <ul id="news-list" class="media-list">
         <?php foreach($mobile_news as $index => $news): ?>
         <li data-id="<?php echo $news->id; ?>" class="media <?php echo $index==0?'first-item':''; ?>" data-href="<?php echo site_url('detail/'.$news->url_title); ?>">
@@ -28,7 +29,7 @@
     </ul>
     <div id="lastPostsLoader"></div>
     <input type="hidden" id="limit" name="limit" value="<?php echo $limit; ?>">
-    <input type="hidden" id="category" name="category" value="<?php echo $category_id; ?>">
+    <input type="hidden" id="category" name="category" value="<?php echo $category->id; ?>">
     <input type="hidden" id="lastPage" name="lastPage" value="1">
 </div>
 
