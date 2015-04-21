@@ -28,6 +28,7 @@
     </ul>
     <div id="lastPostsLoader"></div>
     <input type="hidden" id="limit" name="limit" value="<?php echo $limit; ?>">
+    <input type="hidden" id="category" name="category" value="<?php echo $category_id; ?>">
     <input type="hidden" id="lastPage" name="lastPage" value="1">
 </div>
 
@@ -42,7 +43,7 @@
         in_process = true;
         $('div#lastPostsLoader').html('Loading news...');
  
-        $.post('<?php echo site_url('ajax/news/last'); ?>',{last_page:$('input#lastPage').val(), limit:$('input#limit').val()}, function(data){
+        $.post('<?php echo site_url('ajax/news/category_news'); ?>',{last_page:$('input#lastPage').val(), limit:$('input#limit').val(), category:$('input#category').val()}, function(data){
             if (data.status == 1) {
                 for (var i in data.items){
                     var news = data.items[i];
