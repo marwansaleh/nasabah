@@ -70,8 +70,8 @@ class Category extends MY_News {
     }
     
     public function _remap($method=NULL){
-        $this->mobile($method);
-        /*
+        //$this->mobile($method);
+        
         if ($this->is_device('MOBILE')){
             $this->mobile($method);
         }else{
@@ -85,7 +85,7 @@ class Category extends MY_News {
             }else{
                 redirect('home');
             }
-        }*/
+        }
     }
     
     function mobile($slug=NULL){
